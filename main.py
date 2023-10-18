@@ -1,6 +1,7 @@
 import pygame as pg
 import sys
 from Settings import *
+from map import *
 
 # This is the main class for the game
 class Game:
@@ -12,9 +13,9 @@ class Game:
         pg.init()
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
-
+        self.new_game()
     def new_game(self):
-        pass
+        self.map = Map(self)
 
     def update(self):
         pg.display.flip()
@@ -24,6 +25,7 @@ class Game:
     # This will draw out the screen
     def draw(self):
         self.screen.fill((0, 0, 0))
+        self.map.draw()
 
     # This will check the events such as clicking exit or clicking the close button
     def check_events(self):
