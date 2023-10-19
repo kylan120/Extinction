@@ -11,5 +11,5 @@ PLAYER_POS = 150, 150
 
 # This sets the player's speed, angle, and rotation speed
 PLAYER_ANGLE = 0
-PLAYER_SPEED = 0.5
-PLAYER_ROT_SPEED = 0.002
+PLAYER_SPEED = 1
+PLAYER_ROT_SPEED = 0.1
