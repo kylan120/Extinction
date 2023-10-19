@@ -3,6 +3,7 @@ import sys
 from Settings import *
 from map import *
 
+
 # This is the main class for the game
 class Game:
     # This represents the object of the class itself
@@ -14,6 +15,7 @@ class Game:
         self.screen = pygame.display.set_mode(RES)
         self.clock = pygame.time.Clock()
         self.new_game()
+
     def new_game(self):
         self.map = Map(self)
 
@@ -40,6 +42,7 @@ class Game:
             self.check_events()
             self.draw()
             self.update()
+
 
 # This makes sure the game runs
 if __name__ == '__main__':
