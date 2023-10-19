@@ -1,0 +1,85 @@
+Python is used for:
+Web Development(server-side)
+Software Development
+Mathematics
+System Scripting
+
+Python can be used on a server to create web applications.
+Python can be used alongside software to create workflows.
+Python can connect to database systems. It can also read and modify files.
+Python can be used to handle big data and perform complex mathematics.
+Python can be used for rapid prototyping, or for production-ready software development.
+
+
+Python was designed for readability, and has some similarities to the English language with influence from mathematics.
+Python uses new lines to complete a command, as opposed to other programming languages which often use semicolons or parentheses.
+Python relies on indentation, using whitespace, to define scope; such as the scope of loops, functions and classes. Other programming languages often use curly-brackets for this purpose.
+
+
+Python uses indentation to indicate a block of code.
+
+The most common number of spaces is four but it has to be at least one.
+
+Example of that:
+
+if 5 > 2:
+ print("Five is greater than two!)
+or
+if 5 > 2
+	print("Five is greater than two!)
+
+
+Python has no command for declaring a variable
+
+Example:
+
+x = 5
+y = "Hello"
+
+
+How to comment, you use #.
+
+Strings variables can be declared either by using single or double quotes. 
+
+You can get the data type of a variable with type() function.
+
+For example
+
+x = 5
+
+print(type(x))
+
+it will return: int
+
+Variable names are case-sensitive
+
+A variable can have a short name (like x and y) or a more descriptive name (age, carname, total_volume). Rules for Python variables:
+A variable name must start with a letter or the underscore character
+A variable name cannot start with a number
+A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
+Variable names are case-sensitive (age, Age and AGE are three different variables)
+A variable name cannot be any of the Python keywords.
+
+
+You still have:
+Camel Case, Pascal Case, and Snake Case
+
+
+Python allows you to assign values to multiple variables in one line:
+
+x, y, z = "hello, "all", "world"
+
+You you can assign the same value to mulitple variables in one line:
+
+x = y = z = "Hello"
+
+If you have a collection of values in a list, tuple etc. Python allows you to extract the values into variables. This is called unpacking.
+
+Example:
+
+fruits = ["apple", "banana", "cherry"]
+x, y, z = fruits
+
+Python uses def to define the function 
+
+In Python, __init__ is a special method known as the constructor. It is automatically called when a new instance (object) of a class is created. The __init__ method allows you to initialize the attributes (variables) of an object.

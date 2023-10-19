@@ -1,4 +1,4 @@
-import pygame as pg
+import pygame
 import sys
 from Settings import *
 from map import *
@@ -11,16 +11,16 @@ class Game:
 
     def init(self):
         pg.init()
-        self.screen = pg.display.set_mode(RES)
-        self.clock = pg.time.Clock()
+        self.screen = pygame.display.set_mode(RES)
+        self.clock = pygame.time.Clock()
         self.new_game()
     def new_game(self):
         self.map = Map(self)
 
     def update(self):
-        pg.display.flip()
+        pygame.display.flip()
         self.clock.tick(FPS)
-        pg.display.set_caption(f'FPS: {self.clock.get_fps():.1f}')
+        pg.display.set_caption("Extinction")
 
     # This will draw out the screen
     def draw(self):
@@ -29,9 +29,9 @@ class Game:
 
     # This will check the events such as clicking exit or clicking the close button
     def check_events(self):
-        for event in pg.event.get():
-            if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
-                pg.quit()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+                pygame.quit()
                 sys.exit()
 
     # This will run the game
