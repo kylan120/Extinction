@@ -1,5 +1,8 @@
-import math
+#Name: Kylan, Harry, Nick
+#Descripiton: This is the player class
+#Date: 10/19/2023
 
+import math
 import pygame
 import sys
 from Settings import *
@@ -13,6 +16,7 @@ class Player:
         self.angle = PLAYER_ANGLE
         self.speed = PLAYER_SPEED
 
+#This is for when the player moves
     def movement(self):
         keys = pygame.key.get_pressed()
 
@@ -34,6 +38,7 @@ class Player:
 
         self.check_wall_collision(move_x, move_y)
 
+#This is when the player collides with the wall
     def check_wall_collision(self, dx, dy):
         new_x = self.x + dx
         new_y = self.y + dy
