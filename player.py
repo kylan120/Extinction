@@ -42,10 +42,10 @@ class Player:
     def check_wall_collision(self, dx, dy):
         new_x = self.x + dx
         new_y = self.y + dy
-        player_rect = pygame.Rect(new_x, new_y, 10, 10)  # Adjust dimensions as needed
+        player_rect = pygame.Rect(new_x, new_y, 10, 10)
 
         for wall_pos in self.game.map.world_map:
-            wall_rect = pygame.Rect(wall_pos[0] * 100, wall_pos[1] * 100, 100, 100)  # Adjust dimensions as needed
+            wall_rect = pygame.Rect(wall_pos[0] * 100, wall_pos[1] * 100, 100, 100)
 
             if player_rect.colliderect(wall_rect):
                 return
