@@ -42,7 +42,7 @@ class Game:
             self.check_events()
             self.player.update()  # Call the update method here
             self.draw()  # Call the draw method here
-            self.clock.tick(FPS)  # Tick the clock here
+
 
 
 if __name__ == '__main__':
