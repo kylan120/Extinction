@@ -55,8 +55,7 @@ class Player:
 
     def draw(self):
         pygame.draw.circle(self.game.screen, (255, 255, 255), (int(self.x), int(self.y)), 10)
-        pygame.draw.line(self.game.screen, (255, 255, 255), (int(self.x), int(self.y)),
-                         (int(self.x + 50 * math.cos(self.angle)), int(self.y + 50 * math.sin(self.angle))), 2)
+
 
     def update(self):
         self.movement()
