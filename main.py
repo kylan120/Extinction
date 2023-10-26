@@ -3,7 +3,7 @@ import sys
 from Settings import *
 from map import Map
 from player import Player
-from raycasting import RayCasting
+from raycasting import *
 
 # This is the main class for the game
 class Game:
