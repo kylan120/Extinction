@@ -27,8 +27,7 @@ class Game:
 
     def draw(self):
         self.screen.fill((0, 0, 0))
-        self.map.draw()
-        self.player.draw()
+
 
     def check_events(self):
         for event in pygame.event.get():
