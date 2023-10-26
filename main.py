@@ -5,6 +5,7 @@ from map import *
 from player import *
 from raycasting import *
 
+
 class Game:
     def __init__(self):
         pygame.init()

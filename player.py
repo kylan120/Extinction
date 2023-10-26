@@ -2,6 +2,7 @@ from Settings import *
 import pygame
 import math
 
+
 class Player:
     def __init__(self, game):
         self.game = game
@@ -46,7 +47,6 @@ class Player:
             self.x += dx
         if self.check_wall(int(self.x), int(self.y + dy)):
             self.y += dy
-
 
     def draw(self):
 
