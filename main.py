@@ -17,17 +17,19 @@ class Game:
         self.map = Map(self)
         self.player = Player(self)
         self.raycasting = RayCasting(self)
+        #self.weapon = Weapon(self)
 
     def update(self):
-
             self.player.update()
             self.raycasting.update()
+            #self.weapon.update()
             pygame.display.set_caption("Extinction")
             pygame.display.flip()
             self.delta_time = self.clock.tick(FPS)
 
     def draw(self):
         self.screen.fill((0, 0, 0))
+        #self.weapon.draw()
 
 
     def check_events(self):
