@@ -8,9 +8,9 @@ class Player:
         self.game = game
         self.x, self.y = PLAYER_POS
         self.angle = PLAYER_ANGLE
-        self.shot = False #starts the game off with gun not 'shot'
+        self.shot = False  # starts the game off with gun not 'shot'
 
-    def single_fire_event(self, event):         #makes 'self.shot' TRUE if mouse btn clicked
+    def single_fire_event(self, event):         # makes 'self.shot' TRUE if mouse btn clicked
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1 and not self.shot:
                 self.shot = True
@@ -68,3 +68,4 @@ class Player:
     @property
     def map_pos(self):
         return int(self.x), int(self.y)
+    
