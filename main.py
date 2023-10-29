@@ -4,6 +4,7 @@ from Settings import *
 from map import *
 from player import *
 from raycasting import *
+from weapon import *
 
 class Game:
     def __init__(self):
@@ -17,18 +18,19 @@ class Game:
         self.map = Map(self)
         self.player = Player(self)
         self.raycasting = RayCasting(self)
+        #self.weapon = Weapon(self)
 
     def update(self):
-
             self.player.update()
             self.raycasting.update()
+            #self.weapon.update()
             pygame.display.set_caption("Extinction")
             pygame.display.flip()
             self.delta_time = self.clock.tick(FPS)
 
     def draw(self):
         self.screen.fill((0, 0, 0))
-
+        #self.weapon.draw()
 
     def check_events(self):
         for event in pygame.event.get():
@@ -36,15 +38,11 @@ class Game:
                 pygame.quit()
                 sys.exit()
 
-
-
-
     def run(self):
         while True:
             self.check_events()
             self.draw()
             self.update()
-
 
 if __name__ == '__main__':
     game = Game()
