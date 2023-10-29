@@ -86,4 +86,6 @@ class AnimatedSprite(SpriteObject):
                 img = pygame.image.load(path + '/' + file_name).convert_alpha()
                 images.append(img)
         return images
+        
+        
 """
