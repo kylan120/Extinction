@@ -20,11 +20,12 @@ class Game:
         self.raycasting = RayCasting(self)
 
     def update(self):
-        self.player.update()
-        self.raycasting.update()
-        pygame.display.set_caption("Extinction")
-        pygame.display.flip()
-        self.delta_time = self.clock.tick(FPS)
+
+            self.player.update()
+            self.raycasting.update()
+            pygame.display.set_caption("Extinction")
+            pygame.display.flip()
+            self.delta_time = self.clock.tick(FPS)
 
     def draw(self):
         self.screen.fill((0, 0, 0))
@@ -35,6 +36,9 @@ class Game:
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
+
+
+
 
     def run(self):
         while True:

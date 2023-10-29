@@ -85,3 +85,4 @@ Python uses def to define the function
 In Python, __init__ is a special method known as the constructor. It is automatically called when a new instance (object) of a class is created. The __init__ method allows you to initialize the attributes (variables) of an object.
 
 Python programming provides us with a built-in @property decorator which makes usage of getter and setters much easier in Object-Oriented Programming.
+#djf
