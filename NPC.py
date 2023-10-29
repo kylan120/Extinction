@@ -4,7 +4,7 @@ from random import randint, random, choice
 '''
 Nicholas, Kylan, Harry
 10/29/2023
-npc file with logic etc for npc's 
+npc file with logic etc for npc
 
 class NPC(AnimatedSprite):
     def __init__(self, game, path='resources/sprites/npc/soldier/0.png', pos=(10.5, 5.5),

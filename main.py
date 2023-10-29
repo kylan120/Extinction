@@ -35,6 +35,7 @@ class Game:
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
+            #self.player.single_fire_event(event)
 
 
 
