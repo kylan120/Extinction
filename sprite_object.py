@@ -2,8 +2,9 @@ import pygame
 import math
 from Settings import *
 
+
 class SpriteObject:
-    def __init__(self, game, path='Resources/textures/Sprites/roger-morris.png', pos=(5.5, 3.5)):
+    def __init__(self, game, path='Resources/textures/Sprites/roger-statue-shorter.png', pos=(5.5, 3.5)):
         self.game = game
         self.player = game.player
         self.x, self.y = pos
