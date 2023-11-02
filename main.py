@@ -11,6 +11,7 @@ from sprite_object import *
 class Game:
     def __init__(self):
         pygame.init()
+        pygame.mouse.set_visible(False)
         self.screen = pygame.display.set_mode(RES)
         self.clock = pygame.time.Clock()
         self.delta_time = 1
@@ -33,9 +34,7 @@ class Game:
         self.delta_time = self.clock.tick(FPS)
 
     def draw(self):
-        self.screen.fill((0, 0, 0))
         self.object_renderer.draw()
-
 
     def check_events(self):
         for event in pygame.event.get():
@@ -43,6 +42,7 @@ class Game:
                 pygame.quit()
                 sys.exit()
             self.player.single_fire_event(event)
+
     def run(self):
         while True:
             self.check_events()
