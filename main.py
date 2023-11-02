@@ -5,6 +5,7 @@ from map import *
 from player import *
 from raycasting import *
 from object_renderer import *
+from weapon import *
 
 
 class Game:
@@ -20,12 +21,13 @@ class Game:
         self.player = Player(self)
         self.object_renderer = ObjectRenderer(self)
         self.raycasting = RayCasting(self)
-        # self.weapon = Weapon(self)
+        self.weapon = Weapon(self)
 
     def update(self):
 
         self.player.update()
         self.raycasting.update()
+        self.weapon.update()
         pygame.display.set_caption("Extinction")
         pygame.display.flip()
         self.delta_time = self.clock.tick(FPS)
@@ -33,13 +35,14 @@ class Game:
     def draw(self):
         self.screen.fill((0, 0, 0))
         self.object_renderer.draw()
+        self.weapon.draw()
 
     def check_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
-
+            self.player.single_fire_event(event)
     def run(self):
         while True:
             self.check_events()
