@@ -1,21 +1,24 @@
-#Name: Kylan, Harry, Nick
-#Description: This is the map class where we can layout our map
-#Date: 10/18/2023
+# Name: Kylan, Harry, Nick
+# Description: This is the map class where we can layout our map
+# Date: 10/18/2023
 import pygame as pg
 
-#This makes the mini map using 1 and 0 for layout
+# This makes the mini map using 1 and _ for layout
+_ = False
 mini_map = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1],
-    [1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, _, _, _, _, _, _, _, _, _, _, _, _, 1, 1],
+    [1, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 1],
+    [1, _, _, 2, _, _, _, 2, 2, _, _, _, 2, _, _, 1],
+    [1, _, _, _, _, _, _, 3, 3, _, _, _, _, _, _, 1],
+    [1, _, _, 2, _, _, _, 2, 2, _, _, _, 2, _, _, 1],
+    [1, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 1],
+    [1, 1, _, _, _, _, _, _, _, _, _, _, _, _, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 
-#This creates the map class and initialize it the class itself and game
+
+# This creates the map class and initialize it the class itself and game
 class Map:
     def __init__(self, game):
         self.game = game
