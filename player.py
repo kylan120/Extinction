@@ -16,7 +16,6 @@ class Player:
             if event.button == 1 and not self.shot and not self.game.weapon.reloading:
                 self.shot = True
                 self.game.weapon.reloading = True
-
     def movement(self):
         sin_a = math.sin(self.angle)
         cos_a = math.cos(self.angle)
@@ -51,12 +50,14 @@ class Player:
         return (x, y) not in self.game.map.world_map
 
     def check_wall_collision(self, dx, dy):
-        if self.check_wall(int(self.x + dx), int(self.y)):
+        scale = PLAYER_SIZE_SCALE / self.game.delta_time
+        if self.check_wall(int(self.x + dx * scale), int(self.y)):
             self.x += dx
-        if self.check_wall(int(self.x), int(self.y + dy)):
+        if self.check_wall(int(self.x), int(self.y + dy * scale)):
             self.y += dy
 
     def draw(self):
+
         pygame.draw.circle(self.game.screen, 'green', (self.x * 100, self.y * 100), 15)
 
     def mouse_control(self):
