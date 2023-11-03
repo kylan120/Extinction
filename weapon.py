@@ -1,4 +1,5 @@
 #FilePath is resources/sprites/weapon/shotgun/
+'''
 from sprite_object import *
 import pygame
 from Settings import *
@@ -32,4 +33,4 @@ class Weapon(AnimatedSprite):
 
     def update(self):
         self.check_animation_time()
-        self.animate_shot()
+        self.animate_shot() '''

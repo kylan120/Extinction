@@ -85,4 +85,9 @@ Python uses def to define the function
 In Python, __init__ is a special method known as the constructor. It is automatically called when a new instance (object) of a class is created. The __init__ method allows you to initialize the attributes (variables) of an object.
 
 Python programming provides us with a built-in @property decorator which makes usage of getter and setters much easier in Object-Oriented Programming.
-#djf
+Why are there no arrays of objects in Python:
+because we have lists, which are exactly an array of pointers.
+
+python's array module stores data contiguously, python objects have dynamic sizes and cannot be stored contiguously, so we have lists which store the pointers.
+
+the main use of array is for passing around C-style arrays between different C functions, arrays are slower than lists for numeric types due to the boxing and unboxing, so it has no use in any pure python code.

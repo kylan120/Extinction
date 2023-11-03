@@ -1,4 +1,5 @@
-'''from sprite_object import *
+'''
+from sprite_object import *
 from random import randint, random, choice
 '''
 '''
@@ -24,7 +25,44 @@ class NPC(AnimatedSprite):
         self.accuracy = 0.15
         self.alive = True
         self.pain = False
+        self.ray_cast_value = False
 
     def update(self):
         self.check_animation_time()
-        self.get_sprite()'''
+        self.get_sprite()
+        self.run_logic()
+        #self.draw_ray_cast()
+        
+    def animate_pain(self):
+        self.animate(self.pain_images)
+        if self.animation_trigger:
+            self.pain = False
+        
+    def check_hit_in_npc(self):
+        if self.ray_cast_value and self.game.player.shot:
+            if HALF_WIDTH - self.sprite_half_width < self.screen_x < HALF_WIDTH + self.sprite_half_width:
+                #self.game.sound.npc_pain.play()
+                self.game.player.shot = False
+                self.pain = True
+        
+    def run_logic(self):
+        if self.alive:
+            self.ray_cast_value = self.ray_cast_player_npc()
+            self.check_hit_in_npc()
+            if self.pain:
+                self.animate_pain()
+            else:
+                self.animate(self.idle_images)
+                
+    @property
+    def map_pos(self):
+        return int(self.x), int(self.y)
+        
+        #CODE FROM RAYCASTING
+    
+    def draw_ray_cast(self):
+    pg.draw.circle(self.game.screen, 'red', (100 * self.x, 100 * self.y), 15)
+    if self.ray_cast_player_npc():
+        pg.draw.line(self.game.screen, 'orange', (100 * self.game.player.x, 100 * self.game.player.y),
+                        (100 * self.x, 100 * self.y), 2)
+        '''

@@ -2,14 +2,15 @@ from Settings import *
 import pygame
 import math
 
+
 class Player:
     def __init__(self, game):
         self.game = game
         self.x, self.y = PLAYER_POS
         self.angle = PLAYER_ANGLE
-        self.shot = False #starts the game off with gun not 'shot'
+        self.shot = False  # starts the game off with gun not 'shot'
 
-    def single_fire_event(self, event):         #makes 'self.shot' TRUE if mouse btn clicked
+    def single_fire_event(self, event):         # makes 'self.shot' TRUE if mouse btn clicked
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1 and not self.shot and not self.game.weapon.reloading:
                 self.shot = True
@@ -53,7 +54,6 @@ class Player:
             self.x += dx
         if self.check_wall(int(self.x), int(self.y + dy)):
             self.y += dy
-
 
     def draw(self):
 
