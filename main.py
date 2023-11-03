@@ -15,6 +15,9 @@ class Game:
         self.screen = pygame.display.set_mode(RES)
         self.clock = pygame.time.Clock()
         self.delta_time = 1
+        self.global_trigger = False
+        self.global_event = pg.USEREVENT + 0
+        pg.time.set_timer(self.global_event, 40) #40 millisecond death animation time
         self.new_game()
 
     def new_game(self):
@@ -36,10 +39,14 @@ class Game:
         self.object_renderer.draw()
 
     def check_events(self):
+        self.global_trigger = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
+            elif event.type == self.global_event:
+                self.global_trigger = True
+
 
     def run(self):
         while True:
