@@ -1,9 +1,9 @@
 from sprite_object import *
 from random import randint, random, choice
 
-#Nicholas, Kylan, Harry
-#10/29/2023
-#npc file with logic etc. for npc
+# Nicholas, Kylan, Harry
+# 10/29/2023
+# npc file with logic etc. for npc
 
 
 class NPC(AnimatedSprite):
@@ -33,7 +33,7 @@ class NPC(AnimatedSprite):
         self.check_animation_time()
         self.get_sprite()
         self.run_logic()
-        #self.draw_ray_cast()
+        # self.draw_ray_cast()
 
     def check_wall(self, x, y):
         return (x, y) not in self.game.map.world_map
@@ -67,7 +67,7 @@ class NPC(AnimatedSprite):
     def check_hit_in_npc(self):
         if self.ray_cast_value and self.game.player.shot:
             if HALF_WIDTH - self.sprite_half_width < self.screen_x < HALF_WIDTH + self.sprite_half_width:
-                #self.game.sound.npc_pain.play()
+                # self.game.sound.npc_pain.play()
                 self.game.player.shot = False
                 self.pain = True
                 self.health -= self.game.weapon.damage
@@ -156,9 +156,9 @@ class NPC(AnimatedSprite):
             y_vert += dy
             depth_vert += delta_depth
 
-        #if 0 < player_dist < wall_dist or not wall_dist:
-         #   return True
-        #return False
+        # if 0 < player_dist < wall_dist or not wall_dist:
+        #   return True
+        # return False
 
     def draw_ray_cast(self):
         pg.draw.circle(self.game.screen, 'red', (100 * self.x, 100 * self.y), 15)
