@@ -47,8 +47,8 @@ class Game:
         self.global_trigger = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
-                    pygame.quit()
-                    sys.exit()
+                pygame.quit()
+                sys.exit()
             self.player.single_fire_event(event)
 
     def run(self):
