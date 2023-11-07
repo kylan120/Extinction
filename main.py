@@ -19,7 +19,7 @@ class Game:
         self.delta_time = 1
         self.global_trigger = False
         self.global_event = pg.USEREVENT + 0
-        pg.time.set_timer(self.global_event, 40)  # 40 millisecond death animation time
+        pg.time.set_timer(self.global_event, 50)  # 50 millisecond death animation time
         self.new_game()
 
     def new_game(self):
@@ -49,6 +49,8 @@ class Game:
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
+            elif event.type == self.global_event:
+                self.global_trigger = True
             self.player.single_fire_event(event)
 
     def run(self):

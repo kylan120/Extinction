@@ -47,10 +47,11 @@ class NPC(AnimatedSprite):
     def movement(self):
         next_pos = self.game.player.map_pos
         next_x, next_y = next_pos
-        angle = math.atan2(next_y + 0.5 - self.y, next_x + 0.5 - self.x)
-        dx = math.cos(angle) * self.speed
-        dy = math.sin(angle) * self.speed
-        self.check_wall_collision(dx, dy)
+        if next_pos not in self.game.object_handler.npc_positions:
+            angle = math.atan2(next_y + 0.5 - self.y, next_x + 0.5 - self.x)
+            dx = math.cos(angle) * self.speed
+            dy = math.sin(angle) * self.speed
+            self.check_wall_collision(dx, dy)
 
     def animate_death(self):
         if not self.alive:
@@ -85,19 +86,24 @@ class NPC(AnimatedSprite):
 
             if self.pain:
                 self.animate_pain()
+
             elif self.ray_cast_value:
                 self.player_search_trigger = True
-                self.animate(self.walk_images)
-                self.movement()
 
-            elif self.player_search_trigger:
-                self.animate(self.walk_images)
-                self.movement()
+                if self.dist < self.attack_dist:
+                    self.animate(self.attack_images)
+                    self.attack()
+                else:
+                    self.animate(self.walk_images)
+                    self.movement()
 
-            else:
-                self.animate(self.idle_images)
+        elif self.player_search_trigger:
+            self.animate(self.walk_images)
+            self.movement()
         else:
-            self.animate_death()
+            self.animate(self.idle_images)
+   # else:
+    #    self.animate_death()
                 
     @property
     def map_pos(self):
@@ -115,6 +121,9 @@ class NPC(AnimatedSprite):
         ray_angle = self.theta
         sin_a = math.sin(ray_angle)
         cos_a = math.cos(ray_angle)
+
+        if sin_a == 0:
+            return False #division by zero
 
         y_hor, dy = (y_map + 1, 1) if sin_a > 0 else (y_map - 1e-6, -1)
 
@@ -156,9 +165,12 @@ class NPC(AnimatedSprite):
             y_vert += dy
             depth_vert += delta_depth
 
-        # if 0 < player_dist < wall_dist or not wall_dist:
-        #   return True
-        # return False
+        player_dist = max(player_dist_v, player_dist_h)
+        wall_dist = max(wall_dist_v, wall_dist_h)
+
+        if 0 < player_dist < wall_dist or not wall_dist:
+            return True
+        return False
 
     def draw_ray_cast(self):
         pg.draw.circle(self.game.screen, 'red', (100 * self.x, 100 * self.y), 15)
