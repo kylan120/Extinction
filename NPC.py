@@ -35,7 +35,6 @@ class NPC(AnimatedSprite):
         self.get_sprite()
         self.run_logic()
 
-
     def check_wall(self, x, y):
         return (x, y) not in self.game.map.world_map
 
@@ -54,7 +53,7 @@ class NPC(AnimatedSprite):
             dx = math.cos(angle) * self.speed
             dy = math.sin(angle) * self.speed
             self.check_wall_collision(dx, dy)
-    
+
     def animate_death(self):
         if not self.alive:
             if self.game.global_trigger and self.frame_counter < len(self.death_images) - 1:
@@ -106,7 +105,6 @@ class NPC(AnimatedSprite):
             self.animate(self.idle_images)
 
     def attack(self):
-        # Define the logic for the attack method here
         pass
 
     @property
@@ -175,9 +173,3 @@ class NPC(AnimatedSprite):
         if 0 < player_dist < wall_dist or not wall_dist:
             return True
         return False
-
-    def draw_ray_cast(self):
-        pg.draw.circle(self.game.screen, 'red', (100 * self.x, 100 * self.y), 15)
-        if self.ray_cast_player_npc():
-            pg.draw.line(self.game.screen, 'orange', (100 * self.game.player.x, 100 * self.game.player.y),
-                         (100 * self.x, 100 * self.y), 2)
