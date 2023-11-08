@@ -12,10 +12,11 @@ class ObjectHandler:
         self.anim_sprite_path = 'Resources/textures/Sprites/animated_sprites/'
         self.add_sprite(SpriteObject(game))
         self.add_sprite(AnimatedSprite(game))
+        add_sprite = self.add_sprite
         add_npc = self.add_npc
         self.npc_positions = {}
 
-        # Sprite Map
+        add_sprite(SpriteObject(game, pos=(10.5, 4.0)))
 
         # NPC map
         add_npc(NPC(game))

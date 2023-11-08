@@ -6,7 +6,7 @@ from collections import deque
 
 class SpriteObject:
     def __init__(self, game, path='Resources/textures/Sprites/static_sprites/roger-statue-shorter.png',
-                 pos=(5.5, 3.5), scale=0.7, shift=0.0):
+                 pos=(14.5, 4.0), scale=0.8, shift=0.0):
         self.game = game
         self.player = game.player
         self.x, self.y = pos
