@@ -108,7 +108,7 @@ class NPC(AnimatedSprite):
 
     def attack(self):
         if self.animation_trigger:
-            #self.game.sound.npc_show.play()
+            # self.game.sound.npc_show.play()
             if random() < self.accuracy:
                 self.game.player.get_damage(self.attack_damage)
 
@@ -179,3 +179,8 @@ class NPC(AnimatedSprite):
         if 0 < player_dist < wall_dist or not wall_dist:
             return True
         return False
+
+
+
+
+
