@@ -1,10 +1,12 @@
 import pygame
 from Settings import *
+from main import Fire
 
 
 class ObjectRenderer:
     def __init__(self, game):
         self.game = game
+        self.fire = Fire(self)
         self.screen = game.screen
         self.wall_textures = self.load_wall_textures()
         self.sky_image = self.get_texture('Resources/textures/GC_SKYTN.png', (WIDTH, HALF_HEIGHT))
