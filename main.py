@@ -1,3 +1,7 @@
+#Name: Kylan, Harry, Nick
+#Descripiton: This is the main class
+#Date: 11/08/2023
+
 import pygame
 import sys
 from Settings import *

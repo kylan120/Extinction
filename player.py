@@ -1,3 +1,8 @@
+#Name: Kylan, Harry, Nick
+#Description: This is the player class
+#Date: 11/08/2023
+
+
 from Settings import *
 import pygame
 import math

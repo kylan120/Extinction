@@ -1,3 +1,7 @@
+#Name: Kylan, Harry, Nick
+#Description: This is the object render class
+#Date: 11/08/2023
+
 import pygame
 from Settings import *
 

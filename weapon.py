@@ -1,3 +1,8 @@
+#Name: Kylan, Harry, Nick
+#Description: This is the weapons class
+#Date: 11/08/2023
+
+
 from sprite_object import *
 import pygame
 from Settings import *

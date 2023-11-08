@@ -1,3 +1,8 @@
+#Name: Kylan, Harry, Nick
+#Descripiton: This is the raycasting class
+#Date: 11/08/2023
+
+
 import pygame
 import math
 from Settings import *

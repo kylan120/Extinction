@@ -1,3 +1,7 @@
+#Name: Kylan, Harry, Nick
+#Description: This is the object handler class
+#Date: 11/08/2023
+
 from sprite_object import *
 from NPC import *
 from sound import *
