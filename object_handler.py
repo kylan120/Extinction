@@ -17,12 +17,15 @@ class ObjectHandler:
         self.npc_positions = {}
 
         add_sprite(SpriteObject(game, pos=(10.5, 4.0)))
+        add_sprite(AnimatedSprite(game, pos=(4.5, 5.5)))
 
         # NPC map
         add_npc(NPC(game))
         add_npc(NPC(game, pos=(11.5, 4.5)))
         add_npc(NPC(game, pos=(14.6, 4.5)))
         add_npc(NPC(game, pos=(12.0, 4.5)))
+
+
 
     def update(self):
         self.npc_positions = {npc.map_pos for npc in self.npc_list if npc.alive}
@@ -34,3 +37,6 @@ class ObjectHandler:
 
     def add_sprite(self, sprite):
         self.sprite_list.append(sprite)
+
+
+
