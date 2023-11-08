@@ -11,6 +11,7 @@ from weapon import *
 from pathfinding import *
 from sound import *
 
+
 class Game:
     def __init__(self):
         pygame.init()
@@ -32,6 +33,7 @@ class Game:
         self.weapon = Weapon(self)
         self.pathfinding = PathFinding(self)
         self.sound = Sound(self)
+
     def update(self):
         self.player.update()
         self.raycasting.update()

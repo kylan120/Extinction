@@ -18,12 +18,12 @@ class NPC(AnimatedSprite):
         self.pain_images = self.get_images(self.path + '/pain')
         self.walk_images = self.get_images(self.path + '/walk')
 
-        self.attack_dist = randint(3, 6)
+        self.attack_dist = randint(3, 3)
         self.speed = 0.015
         self.size = 10
         self.health = 100
         self.attack_damage = 10
-        self.accuracy = 0.15
+        self.accuracy = 0.19
         self.alive = True
         self.pain = False
         self.ray_cast_value = False
@@ -98,14 +98,19 @@ class NPC(AnimatedSprite):
                     self.animate(self.walk_images)
                     self.movement()
 
-        elif self.player_search_trigger:
-            self.animate(self.walk_images)
-            self.movement()
+            elif self.player_search_trigger:
+                self.animate(self.walk_images)
+                self.movement()
+            else:
+                self.animate(self.idle_images)
         else:
-            self.animate(self.idle_images)
+            self.animate_death()
 
     def attack(self):
-        pass
+        if self.animation_trigger:
+            #self.game.sound.npc_show.play()
+            if random() < self.accuracy:
+                self.game.player.get_damage(self.attack_damage)
 
     @property
     def map_pos(self):
@@ -114,6 +119,7 @@ class NPC(AnimatedSprite):
     def ray_cast_player_npc(self):
         if self.game.player.map_pos == self.map_pos:
             return True
+
         wall_dist_v, wall_dist_h, = 0, 0
         player_dist_v, player_dist_h, = 0, 0
 
