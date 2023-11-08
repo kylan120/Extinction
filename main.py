@@ -8,7 +8,7 @@ from object_renderer import *
 from sprite_object import *
 from object_handler import *
 from weapon import *
-
+from pathfinding import *
 
 class Game:
     def __init__(self):
@@ -29,7 +29,7 @@ class Game:
         self.raycasting = RayCasting(self)
         self.object_handler = ObjectHandler(self)
         self.weapon = Weapon(self)
-
+        self.pathfinding = PathFinding(self)
     def update(self):
         self.player.update()
         self.raycasting.update()

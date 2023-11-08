@@ -1,6 +1,7 @@
 from sprite_object import *
 from random import randint, random, choice
 
+
 # Nicholas, Kylan, Harry
 # 10/29/2023
 # npc file with logic etc. for npc
@@ -33,7 +34,7 @@ class NPC(AnimatedSprite):
         self.check_animation_time()
         self.get_sprite()
         self.run_logic()
-        # self.draw_ray_cast()
+
 
     def check_wall(self, x, y):
         return (x, y) not in self.game.map.world_map
@@ -45,26 +46,27 @@ class NPC(AnimatedSprite):
             self.y += dy
 
     def movement(self):
-        next_pos = self.game.player.map_pos
+        next_pos = self.game.pathfinding.get_path(self.map_pos, self.game.player.map_pos)
         next_x, next_y = next_pos
+
         if next_pos not in self.game.object_handler.npc_positions:
             angle = math.atan2(next_y + 0.5 - self.y, next_x + 0.5 - self.x)
             dx = math.cos(angle) * self.speed
             dy = math.sin(angle) * self.speed
             self.check_wall_collision(dx, dy)
-
+    
     def animate_death(self):
         if not self.alive:
             if self.game.global_trigger and self.frame_counter < len(self.death_images) - 1:
                 self.death_images.rotate(-1)
                 self.image = self.death_images[0]
                 self.frame_counter += 1
-        
+
     def animate_pain(self):
         self.animate(self.pain_images)
         if self.animation_trigger:
             self.pain = False
-        
+
     def check_hit_in_npc(self):
         if self.ray_cast_value and self.game.player.shot:
             if HALF_WIDTH - self.sprite_half_width < self.screen_x < HALF_WIDTH + self.sprite_half_width:
@@ -102,9 +104,11 @@ class NPC(AnimatedSprite):
             self.movement()
         else:
             self.animate(self.idle_images)
-   # else:
-    #    self.animate_death()
-                
+
+    def attack(self):
+        # Define the logic for the attack method here
+        pass
+
     @property
     def map_pos(self):
         return int(self.x), int(self.y)
@@ -123,7 +127,7 @@ class NPC(AnimatedSprite):
         cos_a = math.cos(ray_angle)
 
         if sin_a == 0:
-            return False #division by zero
+            return False  # division by zero
 
         y_hor, dy = (y_map + 1, 1) if sin_a > 0 else (y_map - 1e-6, -1)
 
