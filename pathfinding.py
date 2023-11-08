@@ -1,5 +1,6 @@
 from collections import deque
 
+
 class PathFinding:
     def __init__(self, game):
         self.game = game
@@ -7,6 +8,7 @@ class PathFinding:
         self.ways = [-1, 0], [0, -1], [1, 0], [0, 1], [-1, -1], [1, -1], [1, 1], [-1, 1]
         self.graph = {}
         self.get_graph()
+
     def get_path(self, start, goal):
         self.visited = self.bfs(start, goal, self.graph)
         path = [goal]
@@ -16,6 +18,7 @@ class PathFinding:
             path.append(step)
             step = self.visited[step]
         return path[-1]
+
     def bfs(self, start, goal, graph):
         queue = deque([start])
         visited = {start: None}

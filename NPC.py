@@ -35,7 +35,6 @@ class NPC(AnimatedSprite):
         self.get_sprite()
         self.run_logic()
 
-
     def check_wall(self, x, y):
         return (x, y) not in self.game.map.world_map
 
