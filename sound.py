@@ -7,6 +7,6 @@ class Sound:
         pygame.mixer.init()
         self.path = 'Resources/sounds/'
         self.gun = pygame.mixer.Sound(self.path + 'pew.wav')
-        #self.theme = pygame.mixer.Sound(self.path + 'theme.wav')
+        self.pain = pygame.mixer.Sound(self.path + 'oof.wav')
 
 
