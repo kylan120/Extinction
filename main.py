@@ -33,7 +33,7 @@ class Game:
         self.weapon = Weapon(self)
         self.pathfinding = PathFinding(self)
         self.sound = Sound(self)
-        self.sound.theme.play(loops=-1)
+        self.sound.theme.play()
 
     def update(self):
         self.player.update()
