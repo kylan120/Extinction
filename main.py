@@ -1,3 +1,7 @@
+#Name: Kylan, Harry, Nick
+#Descripiton: This is the main class
+#Date: 11/08/2023
+
 import pygame
 import sys
 from Settings import *
@@ -36,7 +40,7 @@ class Game:
         self.weapon = Weapon(self)
         self.pathfinding = PathFinding(self)
         self.sound = Sound(self)
-        self.sound.theme.play(loops=-1)
+        self.sound.theme.play()
 
     def update(self):
         self.fire.update()

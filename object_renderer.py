@@ -1,3 +1,7 @@
+#Name: Kylan, Harry, Nick
+#Description: This is the object render class
+#Date: 11/08/2023
+
 import pygame
 from Settings import *
 from main import Fire
@@ -13,11 +17,13 @@ class ObjectRenderer:
         self.sky_offset = 0
         self.bloody_screen = self.get_texture('Resources/textures/RedScreen.png', RES)
         self.game_over_image = self.get_texture('Resources/textures/deathIMG.png', RES)
-
+        self.win_image = self.get_texture('resources/textures/win.png', RES)
     def draw(self):
         self.draw_background()
         self.render_game_objects()
 
+    def win(self):
+        self.screen.blit(self.win_image, (0, 0))
     def game_over(self):
         self.screen.blit(self.game_over_image, (0, 0))
 

@@ -1,3 +1,8 @@
+#Name: Kylan, Harry, Nick
+#Description: This is the player class
+#Date: 11/08/2023
+
+
 from Settings import *
 import pygame
 import math
@@ -23,7 +28,7 @@ class Player:
         self.health -= damage
         self.game.object_renderer.player_damage()
         self.check_game_over()
-        self.game.sound.player_pain.play()
+        #self.game.sound.player_pain.play()
 
     def single_fire_event(self, event):         # makes 'self.shot' TRUE if mouse btn clicked
         if event.type == pygame.MOUSEBUTTONDOWN:

@@ -1,3 +1,8 @@
+#Name: Kylan, Harry, Nick
+#Description: This is the sound class
+#Date: 11/08/2023
+
+
 import pygame
 
 
