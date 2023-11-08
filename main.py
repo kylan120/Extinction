@@ -33,14 +33,14 @@ class Game:
         self.weapon = Weapon(self)
         self.pathfinding = PathFinding(self)
         self.sound = Sound(self)
-        self.sound.theme.play()
+        self.sound.theme.play(loops=-1)
 
     def update(self):
         self.player.update()
         self.raycasting.update()
         self.object_handler.update()
         self.weapon.update()
-        pygame.display.set_caption("Extinction")
+        pygame.display.set_caption("Extinction (fps: " + f'{self.clock.get_fps() :.1f}' + ")")
         pygame.display.flip()
         self.delta_time = self.clock.tick(FPS)
 
