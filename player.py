@@ -8,22 +8,8 @@ class Player:
         self.game = game
         self.x, self.y = PLAYER_POS
         self.angle = PLAYER_ANGLE
-        self.shot = False  # starts the game off with gun not 'shot'
-        self.health = PLAYER_MAX_HEALTH
+        self.shot = False
         self.rel = 0
-
-    def get_damage(self, damage):
-        self.health -= damage
-        self.game.object_renderer.player_damage()
-        self.game.sound.player_pain.play()
-        self.check_game_over()
-
-    def check_game_over(self):
-        if self.health < 1:
-            self.game.object_renderer.game_over()
-            pygame.display.flip()
-            pygame.time.delay(1400)
-            self.game.new_game()
 
     def single_fire_event(self, event):         # makes 'self.shot' TRUE if mouse btn clicked
         if event.type == pygame.MOUSEBUTTONDOWN:

@@ -18,12 +18,12 @@ class NPC(AnimatedSprite):
         self.pain_images = self.get_images(self.path + '/pain')
         self.walk_images = self.get_images(self.path + '/walk')
 
-        self.attack_dist = randint(3, 3)
+        self.attack_dist = randint(3, 6)
         self.speed = 0.015
         self.size = 10
         self.health = 100
         self.attack_damage = 10
-        self.accuracy = 0.17
+        self.accuracy = 0.15
         self.alive = True
         self.pain = False
         self.ray_cast_value = False
@@ -69,7 +69,7 @@ class NPC(AnimatedSprite):
     def check_hit_in_npc(self):
         if self.ray_cast_value and self.game.player.shot:
             if HALF_WIDTH - self.sprite_half_width < self.screen_x < HALF_WIDTH + self.sprite_half_width:
-                self.game.sound.npc_pain.play()
+                # self.game.sound.npc_pain.play()
                 self.game.player.shot = False
                 self.pain = True
                 self.health -= self.game.weapon.damage
@@ -78,7 +78,7 @@ class NPC(AnimatedSprite):
     def check_health(self):
         if self.health < 1:
             self.alive = False
-            self.game.sound.npc_death.play()
+            # NW self.game.sound.npc_death.play()
 
     def run_logic(self):
         if self.alive:
@@ -98,19 +98,14 @@ class NPC(AnimatedSprite):
                     self.animate(self.walk_images)
                     self.movement()
 
-            elif self.player_search_trigger:
-                self.animate(self.walk_images)
-                self.movement()
-            else:
-                self.animate(self.idle_images)
+        elif self.player_search_trigger:
+            self.animate(self.walk_images)
+            self.movement()
         else:
-            self.animate_death()
+            self.animate(self.idle_images)
 
     def attack(self):
-        if self.animation_trigger:
-            self.game.sound.npc_attack.play()
-            if random() < self.accuracy:
-                self.game.player.get_damage(self.attack_damage)
+        pass
 
     @property
     def map_pos(self):
