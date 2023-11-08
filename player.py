@@ -15,7 +15,7 @@ class Player:
     def get_damage(self, damage):
         self.health -= damage
         self.game.object_renderer.player_damage()
-        #self.game.sound.player_pain.play()
+        self.game.sound.player_pain.play()
         self.check_game_over()
 
     def check_game_over(self):
@@ -28,6 +28,7 @@ class Player:
     def single_fire_event(self, event):         # makes 'self.shot' TRUE if mouse btn clicked
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1 and not self.shot and not self.game.weapon.reloading:
+                self.game.sound.gun.play()
                 self.shot = True
                 self.game.weapon.reloading = True
 
