@@ -85,7 +85,7 @@ class Fire:
             for y in range(1, FIRE_HEIGHT):
                 color_index = self.fire_array[y][x]
                 if color_index:
-                    rnd = randint(0, 3)
+                    rnd = randint(1, 3)
                     self.fire_array[y - 1][(x - rnd + 1) % FIRE_WIDTH] = color_index - rnd % 2
                 else:
                     self.fire_array[y - 1][x] = 0

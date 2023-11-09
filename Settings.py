@@ -36,8 +36,8 @@ SCALE = WIDTH // NUM_RAYS
 TEXTURE_SIZE = 256
 HALF_TEXTURE_SIZE = TEXTURE_SIZE // 2
 
-STEPS_BETWEEN_COLORS = 4
-COLORS = ['black', 'green', 'limegreen', 'lime', 'mintcream']
-PIXEL_SIZE = 2
+STEPS_BETWEEN_COLORS = 3
+COLORS = ['darkslategray', 'teal', 'limegreen', 'greenyellow', 'floralwhite']
+PIXEL_SIZE = 4
 FIRE_WIDTH = WIDTH // PIXEL_SIZE
 FIRE_HEIGHT = HEIGHT // PIXEL_SIZE

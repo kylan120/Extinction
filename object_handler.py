@@ -46,6 +46,7 @@ class ObjectHandler:
         if not len(self.npc_positions):
             self.game.object_renderer.win()
             self.game.sound.theme.stop()
+            self.game.sound.win.play()
             pg.display.flip()
             pg.time.delay(1500)
             self.game.new_game()

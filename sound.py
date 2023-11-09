@@ -16,3 +16,4 @@ class Sound:
         self.npc_attack = pygame.mixer.Sound(self.path + 'npc_attack.wav')
         self.npc_death = pygame.mixer.Sound(self.path + 'npc_death.wav')
         self.player_pain = pygame.mixer.Sound(self.path + 'oof.wav')
+        self.win = pygame.mixer.Sound(self.path + 'tada.wav')
