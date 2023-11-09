@@ -1,6 +1,11 @@
+#Name: Kylan, Harry, Nick
+#Description: This is the settings class
+#Date: 11/08/2023
+
+
 import math
 
-RES = WIDTH, HEIGHT = 1600, 900
+RES = WIDTH, HEIGHT = 1200, 675
 HALF_WIDTH = WIDTH // 2
 HALF_HEIGHT = HEIGHT // 2
 FPS = 0
@@ -31,3 +36,9 @@ SCALE = WIDTH // NUM_RAYS
 
 TEXTURE_SIZE = 256
 HALF_TEXTURE_SIZE = TEXTURE_SIZE // 2
+
+STEPS_BETWEEN_COLORS = 4
+COLORS = ['black', 'green', 'limegreen', 'lime', 'mintcream']
+PIXEL_SIZE = 2
+FIRE_WIDTH = WIDTH // PIXEL_SIZE
+FIRE_HEIGHT = HEIGHT // PIXEL_SIZE

@@ -1,3 +1,8 @@
+#Name: Kylan, Harry, Nick
+#Description: This is the sound class
+#Date: 11/08/2023
+
+
 import pygame
 
 
@@ -7,6 +12,8 @@ class Sound:
         pygame.mixer.init()
         self.path = 'Resources/sounds/'
         self.gun = pygame.mixer.Sound(self.path + 'pew.wav')
-        #self.theme = pygame.mixer.Sound(self.path + 'theme.wav')
-
-
+        self.theme = pygame.mixer.Sound(self.path + 'extinction_theme.wav')
+        self.npc_pain = pygame.mixer.Sound(self.path + 'npc_pain.wav')
+        self.npc_attack = pygame.mixer.Sound(self.path + 'npc_attack.wav')
+        self.npc_death = pygame.mixer.Sound(self.path + 'npc_death.wav')
+        self.player_pain = pygame.mixer.Sound(self.path + 'oof.wav')
