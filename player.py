@@ -10,6 +10,7 @@ import math
 
 class Player:
     def __init__(self, game):
+        #player attributes
         self.game = game
         self.x, self.y = PLAYER_POS
         self.angle = PLAYER_ANGLE
@@ -18,6 +19,7 @@ class Player:
         self.rel = 0
 
     def check_game_over(self):
+        #Handles player death
         if self.health < 1:
             self.game.object_renderer.game_over()
             self.game.sound.theme.stop()
@@ -26,6 +28,7 @@ class Player:
             self.game.new_game()
 
     def get_damage(self, damage):
+        #lowers player health, adds player pain sound
         self.health -= damage
         self.game.object_renderer.player_damage()
         self.check_game_over()
@@ -39,6 +42,7 @@ class Player:
                 self.game.weapon.reloading = True
 
     def movement(self):
+        #player movement based on key inputs.
         sin_a = math.sin(self.angle)
         cos_a = math.cos(self.angle)
         dx, dy = 0, 0
@@ -69,9 +73,12 @@ class Player:
         self.angle %= math.tau
 
     def check_wall(self, x, y):
+        #checks if wall is given position is a wall
+
         return (x, y) not in self.game.map.world_map
 
     def check_wall_collision(self, dx, dy):
+        #checks if wall is given position is a wall and changes position if so
         scale = PLAYER_SIZE_SCALE / self.game.delta_time
         if self.check_wall(int(self.x + dx * scale), int(self.y)):
             self.x += dx
@@ -82,6 +89,7 @@ class Player:
         pygame.draw.circle(self.game.screen, 'green', (self.x * 100, self.y * 100), 15)
 
     def mouse_control(self):
+        #mouse control for changing players view direction
         mx, my = pygame.mouse.get_pos()
         if mx < MOUSE_BORDER_LEFT or mx > MOUSE_BORDER_RIGHT:
             pygame.mouse.set_pos([HALF_WIDTH, HALF_HEIGHT])
@@ -90,13 +98,16 @@ class Player:
         self.angle += self.rel * MOUSE_SENSITIVITY * self.game.delta_time
 
     def update(self):
+        #updates players movement and inputs
         self.movement()
         self.mouse_control()
 
     @property
     def pos(self):
+        #current player position
         return self.x, self.y
 
     @property
     def map_pos(self):
+        #current player position on map
         return int(self.x), int(self.y)
