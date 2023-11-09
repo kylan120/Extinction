@@ -179,8 +179,3 @@ class NPC(AnimatedSprite):
         if 0 < player_dist < wall_dist or not wall_dist:
             return True
         return False
-
-
-
-
-

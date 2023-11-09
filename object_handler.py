@@ -1,14 +1,14 @@
-#Name: Kylan, Harry, Nick
-#Description: This is the object handler class
-#Date: 11/08/2023
+# Name: Kylan, Harry, Nick
+# Description: This is the object handler class
+# Date: 11/08/2023
 
 from sprite_object import *
 from NPC import *
 from sound import *
 
+
 class ObjectHandler:
     def __init__(self, game):
-
         self.game = game
         self.sprite_list = []
         self.npc_list = []
@@ -49,4 +49,3 @@ class ObjectHandler:
             pg.display.flip()
             pg.time.delay(1500)
             self.game.new_game()
-

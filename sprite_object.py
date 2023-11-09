@@ -1,6 +1,6 @@
-#Name: Kylan, Harry, Nick
-#Description: This is the sprite object class
-#Date: 11/08/2023
+# Name: Kylan, Harry, Nick
+# Description: This is the sprite object class
+# Date: 11/08/2023
 
 import pygame as pg
 from Settings import *

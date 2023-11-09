@@ -1,7 +1,6 @@
-#Name: Kylan, Harry, Nick
-#Description: This is the settings class
-#Date: 11/08/2023
-
+# Name: Kylan, Harry, Nick
+# Description: This is the settings class
+# Date: 11/08/2023
 
 import math
 

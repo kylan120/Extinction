@@ -1,7 +1,6 @@
-#Name: Kylan, Harry, Nick
-#Descripiton: This is the pathfinding class
-#Date: 11/08/2023
-
+# Name: Kylan, Harry, Nick
+# Description: This is the pathfinding class
+# Date: 11/08/2023
 
 from collections import deque
 
