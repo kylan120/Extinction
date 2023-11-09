@@ -42,7 +42,7 @@ class Game:
         pygame.display.set_caption("Extinction")
         pygame.display.flip()
         self.delta_time = self.clock.tick(FPS)
-       # self.sound.theme.play()
+        # self.sound.theme.play()
 
     def draw(self):
         self.object_renderer.draw()
