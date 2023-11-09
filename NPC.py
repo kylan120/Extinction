@@ -30,25 +30,25 @@ class NPC(AnimatedSprite):
         self.frame_counter = 0
         self.player_search_trigger = False
 
-    #update method in game loop
+    # update method in game loop
     def update(self):
         self.check_animation_time()
         self.get_sprite()
         self.run_logic()
 
     def check_wall(self, x, y):
-        #checks if the given position is a wall or not
+        # checks if the given position is a wall or not
         return (x, y) not in self.game.map.world_map
 
     def check_wall_collision(self, dx, dy):
-        #basically saying if theres a wall collision to go around it instead
+        # basically saying if there's a wall collision to go around it instead
         if self.check_wall(int(self.x + dx * self.size), int(self.y)):
             self.x += dx
         if self.check_wall(int(self.x), int(self.y + dy * self.size)):
             self.y += dy
 
     def movement(self):
-        #usiNG Pathfinding to move the NPCs towards the player
+        # usiNG Pathfinding to move the NPCs towards the player
         next_pos = self.game.pathfinding.get_path(self.map_pos, self.game.player.map_pos)
         next_x, next_y = next_pos
 
@@ -59,7 +59,7 @@ class NPC(AnimatedSprite):
             self.check_wall_collision(dx, dy)
 
     def animate_death(self):
-        #This animates the death sequence if npc is not alive
+        # This animates the death sequence if npc is not alive
         if not self.alive:
             if self.game.global_trigger and self.frame_counter < len(self.death_images) - 1:
                 self.death_images.rotate(-1)
@@ -67,13 +67,13 @@ class NPC(AnimatedSprite):
                 self.frame_counter += 1
 
     def animate_pain(self):
-        #animates the NPC's pain if they are hit.
+        # animates the NPC's pain if they are hit.
         self.animate(self.pain_images)
         if self.animation_trigger:
             self.pain = False
 
     def check_hit_in_npc(self):
-        #this checks if the player's shot hits the NPC or not
+        # this checks if the player's shot hits the NPC or not
         if self.ray_cast_value and self.game.player.shot:
             if HALF_WIDTH - self.sprite_half_width < self.screen_x < HALF_WIDTH + self.sprite_half_width:
                 self.game.sound.npc_pain.play()
@@ -83,13 +83,13 @@ class NPC(AnimatedSprite):
                 self.check_health()
 
     def check_health(self):
-        #If health is below zero, play death sound and set alive to false
+        # If health is below zero, play death sound and set alive to false
         if self.health < 1:
             self.alive = False
             self.game.sound.npc_death.play()
 
     def run_logic(self):
-        #Main NPC logic behavior
+        # Main NPC logic behavior
         if self.alive:
             self.ray_cast_value = self.ray_cast_player_npc()
             self.check_hit_in_npc()
@@ -116,39 +116,39 @@ class NPC(AnimatedSprite):
             self.animate_death()
 
     def attack(self):
-        #Attack the player
+        # Attack the player
         if self.animation_trigger:
             self.game.sound.npc_attack.play()
             if random() < self.accuracy:
                 self.game.player.get_damage(self.attack_damage)
 
     @property
-    #Gets current NPC map position
+    # Gets current NPC map position
     def map_pos(self):
         return int(self.x), int(self.y)
 
     def ray_cast_player_npc(self):
-        #Ray-cast to see if the player is visible to the NPC
+        # Ray-cast to see if the player is visible to the NPC
         if self.game.player.map_pos == self.map_pos:
             return True
 
-        #Variables for vert and horizontal wall and player distances
+        # Variables for vert and horizontal wall and player distances
         wall_dist_v, wall_dist_h, = 0, 0
         player_dist_v, player_dist_h, = 0, 0
 
-        #Player and map's position
+        # Player and map's position
         ox, oy = self.game.player.pos
         x_map, y_map = self.game.player.map_pos
 
-        #ray angle, sin, cosine
+        # ray angle, sin, cosine
         ray_angle = self.theta
         sin_a = math.sin(ray_angle)
         cos_a = math.cos(ray_angle)
 
-        if sin_a == 0: #Deals with /0
+        if sin_a == 0: # Deals with /0
             return False  # division by zero
 
-        #horizontal raycasting variables
+        # horizontal raycasting variables
         y_hor, dy = (y_map + 1, 1) if sin_a > 0 else (y_map - 1e-6, -1)
 
         depth_hor = (y_hor - oy) / sin_a
@@ -157,7 +157,7 @@ class NPC(AnimatedSprite):
         delta_depth = dy / sin_a
         dx = delta_depth * cos_a
 
-        #horizontal ray casting execution
+        # horizontal raycasting execution
         for i in range(MAX_DEPTH):
             tile_hor = int(x_hor), int(y_hor)
             if tile_hor == self.map_pos:
@@ -170,7 +170,7 @@ class NPC(AnimatedSprite):
             y_hor += dy
             depth_hor += delta_depth
 
-        #vertical raycasting variables
+        # vertical raycasting variables
         x_vert, dx = (x_map + 1, 1) if cos_a > 0 else (x_map - 1e-6, -1)
 
         depth_vert = (x_vert - ox) / cos_a
@@ -179,7 +179,7 @@ class NPC(AnimatedSprite):
         delta_depth = dx / cos_a
         dy = delta_depth * sin_a
 
-        #vertical ray casting execution
+        # vertical raycasting execution
         for i in range(MAX_DEPTH):
             tile_vert = int(x_vert), int(y_vert)
             if tile_vert == self.map_pos:
@@ -192,12 +192,12 @@ class NPC(AnimatedSprite):
             y_vert += dy
             depth_vert += delta_depth
 
-        #player and wall distance and checks visibility
+        # player and wall distance and checks visibility
         player_dist = max(player_dist_v, player_dist_h)
         wall_dist = max(wall_dist_v, wall_dist_h)
 
-        #If player is within the wall distance, and there's no wall inbetween, then the player is visible.
-        #otherwise, they are not visible
+        # If player is within the wall distance, and there's no wall inbetween, then the player is visible.
+        # otherwise, they are not visible
         if 0 < player_dist < wall_dist or not wall_dist:
             return True
         return False
