@@ -20,6 +20,7 @@ class Player:
     def check_game_over(self):
         if self.health < 1:
             self.game.object_renderer.game_over()
+            self.game.sound.theme.stop()
             pygame.display.flip()
             pygame.time.delay(1700)
             self.game.new_game()
